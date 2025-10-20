@@ -57,3 +57,53 @@ Running Time
 
 
 Therefore T(n) >= Fn
+
+this algorithm is very slow
+--------------------------------------------------
+how do we calculate this by hand?
+
+0 + 1 = 1
+1 + 1 = 2
+1 + 2 = 3
+2 + 3 = 5
+3 + 5 = 8
+
+==> 0, 1, 1, 2, 3, 5, 8
+
+if we have all the previous numbers written down we don't to use the reqursive calls, that was used before
+
+----------------------------------------------
+we create an array F
+the initial conditions: 
+    F[0]  <-- 0
+    F[1]  <-- 1
+
+for i from 2 to n:
+    F[i]  <-- F[i-1] + F[i-2]
+
+return F[n]
+-----------------------------------------------
+the count of operation:
+
+create an array F ----> 1 operation
+F[0]  <-- 0  ----> 1 operation // assignemnt
+F[1]  <-- 1  ----> 1 operation // assignment  
+
+for i from 2 to n:  // Iterations  n - 2 and we add 1  becouse n is included ==> n - 2 + 1 = n - 1
+                                                                             ==> n-1 iteration
+    F[i]  <-- F[i-1] + F[i-2]  ----> 2 operations per iteration // addition and assignment 
+                                     # for each i, it calculates F[i] by adding the two previous  Fibonacci numbers
+                               ----> 2op * (n-1) iteration = 2 (n-1) 
+
+return F[n] ----> 1 operation
+
+
+---> total is ----> 2 . ( n - 1 ) + 1 + 1 + 1 + 1 = 2n - 2 + 1 + 1 + 1 + 1 = 2n + 2
+
+
+ex:
+if T(100) ==> 2(100) + 2 = 202
+
+---------------------------------------------
+
+
